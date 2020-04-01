@@ -230,13 +230,12 @@ namespace EditorNS
 
     bool Editor::isClean()
     {
-        // QVariant data(0);  avoid crash on Mac OS X, see issue #702
         bool result = false;
         QPromise<bool> promise = isCleanP().tap([&](bool res) {
            result = res;
         });
         promise.wait();
-		return result;
+	    return result;
     }
 
     QPromise<void> Editor::markClean()
